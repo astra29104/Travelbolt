@@ -54,7 +54,7 @@ const SignupPage: React.FC = () => {
               <span className="text-2xl font-bold ml-2">TravelQuest</span>
             </Link>
             <h1 className="text-2xl font-bold mt-6 mb-2">Create Your Account</h1>
-            <p className="text-gray-600">Join TravelQuest to start your adventure</p>
+            <p className="text-gray-600">Join DesiGuide to start your adventure</p>
           </div>
 
           <div className="bg-white rounded-xl shadow-md p-6 mb-6">
