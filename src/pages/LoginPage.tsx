@@ -40,7 +40,7 @@ const LoginPage: React.FC = () => {
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center justify-center">
               <MapPin className="h-8 w-8 text-cyan-600" />
-              <span className="text-2xl font-bold ml-2">TravelQuest</span>
+              <span className="text-2xl font-bold ml-2">Desi Guide</span>
             </Link>
             <h1 className="text-2xl font-bold mt-6 mb-2">Welcome Back</h1>
             <p className="text-gray-600">Sign in to continue to your account</p>
