@@ -232,7 +232,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Call to Action
       <section 
         className="py-16 bg-cover bg-center text-white"
         style={{ 
@@ -251,7 +251,7 @@ const HomePage: React.FC = () => {
             Sign Up Now
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

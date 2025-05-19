@@ -174,7 +174,7 @@ const BookingsPage: React.FC = () => {
                             <User className="h-5 w-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
                             <div>
                               <p className="text-sm text-gray-500">Guide</p>
-                              <p className="font-medium">{booking.guides?.name}</p>
+                              <p className="font-medium">{booking.guide_id}</p>
                             </div>
                           </div>
                           

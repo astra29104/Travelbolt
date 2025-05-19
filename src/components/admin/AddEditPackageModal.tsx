@@ -6,13 +6,13 @@ import { supabase } from '../../lib/supabase';
 import { usePackages } from '../../hooks/usePackages'; // Add this import
 
 interface Props {
-  package?: Tables['packages'];
-  destinationId?: string;
+  package?: any;
+  destinationId: string;
   onClose: () => void;
-  onSave: (pkg: Omit<Tables['packages'], 'id' | 'created_at' | 'updated_at'>) => Promise<Tables['packages']>;
+  onSave: (data: any) => void; // <-- Add this line
 }
 
-export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destinationId: initialDestinationId, onClose }) => {
+export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destinationId: initialDestinationId, onClose, onSave }) => {
   const [title, setTitle] = useState(pkg?.title || '');
   const [description, setDescription] = useState(pkg?.description || '');
   const [duration, setDuration] = useState(pkg?.duration?.toString() || '');
@@ -114,6 +114,7 @@ export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destination
     }
 
     try {
+      // Collect all your form data into an object, e.g.:
       const packageData = {
         ...(pkg?.id ? { id: pkg.id } : {}),
         destination_id: selectedDestinationId,
@@ -122,15 +123,11 @@ export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destination
         duration: parseInt(duration),
         price: parseFloat(price),
         rating: pkg?.rating || 0,
-        main_image_url: mainImageUrl
+        main_image_url: mainImageUrl,
+        itinerary: itineraryDescriptions,
+        places: selectedPlaces,
       };
-
-      const itineraryData = {
-        no_of_days: parseInt(duration),
-        description: itineraryDescriptions
-      };
-
-      await addOrUpdatePackageWithItinerary(packageData, itineraryData);
+      await onSave(packageData); // <-- Call the prop
 
       onClose();
     } catch (err) {

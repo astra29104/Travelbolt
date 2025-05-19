@@ -73,6 +73,7 @@ export type Tables = {
     created_at: string;
     updated_at: string;
   };
+  
   bookings: {
     id: string;
     user_id: string;
