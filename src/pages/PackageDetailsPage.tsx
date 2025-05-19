@@ -33,7 +33,7 @@ const PackageDetailsPage: React.FC = () => {
 
   useEffect(() => {
     if (packageDetails && !mainImage) {
-      setMainImage(packageDetails.main_image_url);
+      setMainImage(packageDetails.main_image_url || '');
     }
   }, [packageDetails, mainImage]);
 

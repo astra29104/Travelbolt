@@ -6,9 +6,37 @@ import { useBookings } from '../hooks/useBookings';
 
 const BookingsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'upcoming' | 'completed' | 'cancelled'>('all');
-  const [selectedBooking, setSelectedBooking] = useState<any | null>(null);
+  type Booking = {
+    id: string;
+    user_id: string;
+    package_id: string;
+    guide_id: string;
+    start_date: string;
+    end_date: string;
+    status: string;
+    total_cost: number;
+    created_at: string;
+    updated_at: string;
+    packages?: {
+      main_image_url?: string;
+      title?: string;
+      destinations?: {
+        name?: string;
+      };
+    };
+    guides?: {
+      name?: string;
+    };
+  };
+
+  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const { user } = useAuth();
-  const { bookings, loading, error, updateBookingStatus } = useBookings(user?.id);
+  const { bookings, loading, error, updateBookingStatus } = useBookings(user?.id) as {
+    bookings: Booking[];
+    loading: boolean;
+    error: string | null;
+    updateBookingStatus: (id: string, status: string) => Promise<void>;
+  };
 
   // Filter bookings based on active tab
   const filteredBookings = activeTab === 'all' 
