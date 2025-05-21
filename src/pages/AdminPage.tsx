@@ -451,7 +451,7 @@ const ManagePackages: React.FC = () => {
       setEditingPackage(null);
     } catch (error) {
       console.error('Error saving package:', error);
-      alert('Failed to save package');
+      // alert('Failed to save package');
     }
   };
 
