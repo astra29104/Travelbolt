@@ -123,7 +123,6 @@ export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destination
         price: parseFloat(price),
         rating: pkg?.rating || 0,
         main_image_url: mainImageUrl,
-        places: selectedPlaces,
       };
       // Pass itineraryDescriptions separately if needed
       await onSave(packageData, itineraryDescriptions);
