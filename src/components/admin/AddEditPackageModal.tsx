@@ -9,7 +9,7 @@ interface Props {
   package?: any;
   destinationId: string;
   onClose: () => void;
-  onSave: (data: any) => void; // <-- Add this line
+  onSave: (data: any, itineraryDescriptions: string[]) => void;
 }
 
 export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destinationId: initialDestinationId, onClose, onSave }) => {
@@ -114,7 +114,6 @@ export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destination
     }
 
     try {
-      // Collect all your form data into an object, e.g.:
       const packageData = {
         ...(pkg?.id ? { id: pkg.id } : {}),
         destination_id: selectedDestinationId,
@@ -124,10 +123,10 @@ export const AddEditPackageModal: React.FC<Props> = ({ package: pkg, destination
         price: parseFloat(price),
         rating: pkg?.rating || 0,
         main_image_url: mainImageUrl,
-        itinerary: itineraryDescriptions,
         places: selectedPlaces,
       };
-      await onSave(packageData); // <-- Call the prop
+      // Pass itineraryDescriptions separately if needed
+      await onSave(packageData, itineraryDescriptions);
 
       onClose();
     } catch (err) {
